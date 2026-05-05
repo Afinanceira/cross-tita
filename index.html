@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento Aula Experimental - Crossfit</title>
+    <style>
+        :root {
+            --primary-blue: #003366; /* Azul Profissional */
+            --accent-red: #cc0000;  /* Vermelho Energia */
+            --white: #ffffff;
+            --dark-bg: #121212;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('background-crossfit.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        .header h1 { 
+            font-size: 1.8rem; 
+            margin: 0; 
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .header p { 
+            color: var(--accent-red); 
+            font-weight: bold; 
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        h2 { 
+            font-size: 1.1rem; 
+            margin: 40px 0 20px; 
+            text-transform: uppercase; 
+            color: var(--white);
+            border-bottom: 2px solid var(--primary-blue);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Card Único: Aula Experimental */
+        .plan-card {
+            background: rgba(30, 30, 30, 0.9);
+            border: 2px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.3);
+        }
+
+        .plan-info { text-align: left; }
+        .plan-title { font-weight: bold; text-transform: uppercase; font-size: 1rem; color: var(--white); }
+        .plan-price { color: var(--accent-red); font-size: 0.9rem; font-weight: bold; }
+
+        /* Formulário de Cadastro */
+        .form-group { margin-top: 20px; text-align: left; }
+        label { font-size: 0.8rem; color: #bbb; margin-left: 5px; }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 8px 0 15px;
+            background: rgba(42, 42, 42, 0.8);
+            border: 1px solid var(--primary-blue);
+            border-radius: 8px;
+            color: white;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border-color: var(--accent-red);
+            outline: none;
+        }
+
+        .btn-confirm {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-confirm:hover {
+            background: #a30000;
+            transform: scale(1.02);
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <!-- Substitua pelo link da logo do cliente -->
+        <img src="logo.png" alt="Logo do Box">
+        <h1>CROSSFIT BOX</h1>
+        <p>AGENDAMENTO ONLINE</p>
+    </div>
+
+    <h2>Escolha sua experiência</h2>
+
+    <div class="plan-card">
+        <div class="plan-info">
+            <div class="plan-title">Aula Experimental</div>
+            <div class="plan-price">100% GRATUITO</div>
+        </div>
+        <div style="color: var(--accent-red); font-size: 1.2rem;">★</div>
+    </div>
+
+    <div class="form-group">
+        <label>Nome Completo</label>
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        
+        <label>WhatsApp</label>
+        <input type="tel" id="whatsapp" placeholder="(83) 99999-9999">
+        
+        <label>Data do Agendamento</label>
+        <input type="date" id="data">
+
+        <button class="btn-confirm" onclick="enviarAgendamento()">CONFIRMAR AGENDAMENTO</button>
+    </div>
+
+    <footer>
+        Desenvolvido por AFinanceira Solutions
+    </footer>
+</div>
+
+<script>
+    function enviarAgendamento() {
+        const nome = document.getElementById('nome').value;
+        const whats = document.getElementById('whatsapp').value;
+        const data = document.getElementById('data').value;
+
+        if (!nome || !whats || !data) {
+            alert("Por favor, preencha todos os campos para garantir sua vaga!");
+            return;
+        }
+
+        // Formatação da data para o padrão brasileiro
+        const dataFormatada = data.split('-').reverse().join('/');
+
+        const mensagem = `Olá! Gostaria de agendar minha *Aula Experimental Gratuita*:\n\n` +
+                         `*Nome:* ${nome}\n` +
+                         `*WhatsApp:* ${whats}\n` +
+                         `*Data pretendida:* ${dataFormatada}\n\n` +
+                         `Aguardo a confirmação do horário!`;
+
+        const numeroZap = "5583982052933"; // Seu número configurado
+        window.open(`https://wa.me/${numeroZap}?text=${encodeURIComponent(mensagem)}`);
+    }
+</script>
+
+</body>
+</html>
