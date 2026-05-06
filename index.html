@@ -138,7 +138,7 @@
     <div class="header">
         <!-- Substitua pelo link da logo do cliente -->
        
-        <h1>CROSSFIT BOX</h1>
+        <h1>CT TITÃ</h1>
         <p>AGENDAMENTO ONLINE</p>
     </div>
 
@@ -147,7 +147,7 @@
     <div class="plan-card">
         <div class="plan-info">
             <div class="plan-title">Aula Experimental</div>
-            <div class="plan-price">100% GRATUITO</div>
+            <div class="plan-price">1 semana 100% GRATUITA</div>
         </div>
         <div style="color: var(--accent-red); font-size: 1.2rem;">★</div>
     </div>
@@ -162,11 +162,28 @@
         <label>Data do Agendamento</label>
         <input type="date" id="data">
 
+        <!-- Campo de Horários -->
+<div class="input-group">
+    <label for="horario">Horário Disponível</label>
+    <select id="horario" name="horario" required>
+        <option value="" disabled selected>Escolha o horário</option>
+        <option value="06:00">06:00</option>
+        <option value="07:00">07:00</option>
+        <option value="11:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
+        <option value="19:00">19:00</option>
+        <option value="20:00">20:00</option>
+    </select>
+</div>
+
         <button class="btn-confirm" onclick="enviarAgendamento()">CONFIRMAR AGENDAMENTO</button>
     </div>
 
     <footer>
-        Desenvolvido por AFinanceira Solutions
+        Desenvolvido por AFinanceira Consultoria
     </footer>
 </div>
 
@@ -188,7 +205,7 @@
                          `*Nome:* ${nome}\n` +
                          `*WhatsApp:* ${whats}\n` +
                          `*Data pretendida:* ${dataFormatada}\n\n` +
-                         `Aguardo a confirmação do horário!`;
+                         `horario = document.getElementById('horario').value;`;
 
         const numeroZap = "5583982052933"; // Seu número configurado
         window.open(`https://wa.me/${numeroZap}?text=${encodeURIComponent(mensagem)}`);
